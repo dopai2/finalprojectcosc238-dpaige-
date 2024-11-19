@@ -1,0 +1,13 @@
+void saveTasksToFile(string filename) const {
+    ofstream outFile(filename);
+    if (!outFile) {
+        cout << "Unable to open file: " << filename << endl;
+        return;
+    }
+    Node* current = head;
+    while (current != nullptr) {
+        outFile << current->task.getName() << "," << current->task.getDeadline() << endl;
+        current = current->next;
+    }
+    outFile.close();
+}
